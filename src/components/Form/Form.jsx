@@ -1,12 +1,13 @@
-import { add } from "../../redux/contactsSlice";
+import { addNewContact } from 'redux/contactOperations';
+import { selectContacts } from 'redux/selectors';
 import { useDispatch, useSelector } from "react-redux";
-import { nanoid } from "nanoid";
+//import { nanoid } from "nanoid";
 import { FormStyle } from './Form.styled';
 
 export const Form = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
-  console.log(contacts);
+  const contacts = useSelector(selectContacts);
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
@@ -20,8 +21,13 @@ export const Form = () => {
           return;
         }
 
+        else if (!/^\d+$/.test(number)) {
+          alert('Please enter a valid number.');
+          return;
+      }
+
     event.target.reset();
-    dispatch(add({id: nanoid(), name, number}))
+    dispatch(addNewContact({name, number}))
 }; 
 
 const isFormValid = event => event.target.checkValidity();

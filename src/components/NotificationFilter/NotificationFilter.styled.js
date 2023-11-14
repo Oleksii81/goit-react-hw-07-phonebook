@@ -7,8 +7,8 @@ export const TextFilterStyle = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     .text-style{
-        font-size: 40px;
+        font-size: 20px;
     }
 `
