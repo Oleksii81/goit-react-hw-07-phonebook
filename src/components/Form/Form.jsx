@@ -21,11 +21,6 @@ export const Form = () => {
           return;
         }
 
-        else if (!/^\d+$/.test(number)) {
-          alert('Please enter a valid number.');
-          return;
-      }
-
     event.target.reset();
     dispatch(addNewContact({name, number}))
 }; 
@@ -52,7 +47,7 @@ const isFormValid = event => event.target.checkValidity();
           type="tel"
           name="number"
           required
-          pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
+          pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}|^\d{3}-\d{3}-\d{3}$"
           id='number'
         />
       </label>
