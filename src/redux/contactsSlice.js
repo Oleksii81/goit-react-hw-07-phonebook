@@ -36,10 +36,11 @@ const contactsSlice = createSlice({
         .addCase(addNewContact.rejected, handleRejected)
         .addCase(deleteContactById.pending, handlePending)
         .addCase(deleteContactById.fulfilled, (state, action) => {
+          const deletedContactId = action.payload;
           state.isLoading = false;
           state.error = null;
           state.contacts = state.contacts.filter(
-            contact => contact.id !== action.payload.id
+            (contact) => contact.id !== deletedContactId
           );
         })
         .addCase(deleteContactById.rejected, handleRejected);
